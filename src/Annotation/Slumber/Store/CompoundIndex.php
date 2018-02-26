@@ -9,7 +9,7 @@ use Doctrine\Common\Annotations\Annotation;
 use PeekAndPoke\Component\Slumber\Annotation\ClassMarker;
 use PeekAndPoke\Component\Slumber\Annotation\CompoundIndexDefinition;
 use PeekAndPoke\Component\Slumber\Core\Exception\SlumberException;
-use PeekAndPoke\Component\Slumber\Core\Validation\ClassAnnotationValidationContext;
+use PeekAndPoke\Component\Slumber\Core\Validation\ValidationContext;
 
 /**
  * @Annotation
@@ -27,11 +27,11 @@ class CompoundIndex extends AbstractIndexDefinition implements ClassMarker, Comp
     public $def = [];
 
     /**
-     * @param ClassAnnotationValidationContext $context
+     * @param ValidationContext $context
      *
      * @throws SlumberException
      */
-    public function validate($context)
+    public function validate(ValidationContext $context)
     {
         $direction = $this->getDirection();
 

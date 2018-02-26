@@ -7,6 +7,7 @@ namespace PeekAndPoke\Component\Slumber\Annotation\Slumber\Store;
 
 use Doctrine\Common\Annotations\Annotation;
 use PeekAndPoke\Component\Slumber\Annotation\PropertyStorageIndexMarker;
+use PeekAndPoke\Component\Slumber\Core\Validation\ValidationContext;
 
 /**
  * @Annotation
@@ -19,7 +20,7 @@ class Indexed extends AbstractIndexDefinition implements PropertyStorageIndexMar
     /**
      * @inheritdoc
      */
-    public function validate($context)
+    public function validate(ValidationContext $context)
     {
         $direction = $this->getDirection();
 

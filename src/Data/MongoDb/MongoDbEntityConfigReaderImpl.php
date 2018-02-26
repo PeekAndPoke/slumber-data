@@ -5,13 +5,21 @@
 
 namespace PeekAndPoke\Component\Slumber\Data\MongoDb;
 
-use PeekAndPoke\Component\Slumber\Core\LookUp\DelegatingEntityConfigReader;
+use PeekAndPoke\Component\Slumber\Core\LookUp\EntityConfigReader;
 
 /**
  * @author Karsten J. Gerber <kontakt@karsten-gerber.de>
  */
-class MongoDbEntityConfigReaderImpl extends DelegatingEntityConfigReader implements MongoDbEntityConfigReader
+class MongoDbEntityConfigReaderImpl implements MongoDbEntityConfigReader
 {
+    /** @var EntityConfigReader */
+    private $delegate;
+
+    public function __construct(EntityConfigReader $delegate)
+    {
+        $this->delegate = $delegate;
+    }
+
     /**
      * @param \ReflectionClass $subject
      *

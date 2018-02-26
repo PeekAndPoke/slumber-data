@@ -17,8 +17,7 @@
         "psr/container": "^1.0",
         "mongodb/mongodb": "^1.2.0",
         "symfony/console": "^3.3.10",
-        "peekandpoke/psi": "^1.0.1",
-        "peekandpoke/slumber": "^1.0.0"
+        "peekandpoke/slumber": "^1.1.1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",

@@ -8,6 +8,7 @@ namespace PeekAndPoke\Component\Slumber\Annotation\Slumber\Store;
 use Doctrine\Common\Annotations\Annotation;
 use PeekAndPoke\Component\Slumber\Annotation\PropertyStorageMarker;
 use PeekAndPoke\Component\Slumber\Core\Exception\SlumberException;
+use PeekAndPoke\Component\Slumber\Core\Validation\ValidationContext;
 
 /**
  * Id defines the primary identifier in an entity held in a storage like MongoDb
@@ -22,11 +23,11 @@ class AsId implements PropertyStorageMarker
     /**
      * Initialize the annotation and validate the given parameters
      *
-     * @param mixed $context
+     * @param ValidationContext $context
      *
      * @throws SlumberException
      */
-    public function validate($context)
+    public function validate(ValidationContext $context)
     {
         // noop
     }

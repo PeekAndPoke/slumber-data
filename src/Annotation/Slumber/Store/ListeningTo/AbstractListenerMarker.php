@@ -9,7 +9,7 @@ use PeekAndPoke\Component\Emitter\Listener;
 use PeekAndPoke\Component\Psi\Psi\IsInstanceOf;
 use PeekAndPoke\Component\Slumber\Annotation\ServiceInjectingSlumberAnnotation;
 use PeekAndPoke\Component\Slumber\Core\Exception\SlumberException;
-use PeekAndPoke\Component\Slumber\Core\Validation\ClassAnnotationValidationContext;
+use PeekAndPoke\Component\Slumber\Core\Validation\ValidationContext;
 use Psr\Container\ContainerInterface;
 
 /**
@@ -31,11 +31,11 @@ abstract class AbstractListenerMarker extends ServiceInjectingSlumberAnnotation
     }
 
     /**
-     * @param ClassAnnotationValidationContext $context
+     * @param ValidationContext $context
      *
      * @throws SlumberException
      */
-    public function validate($context)
+    public function validate(ValidationContext $context)
     {
         parent::validate($context);
 

@@ -7,6 +7,7 @@ namespace PeekAndPoke\Component\Slumber\Functional\MongoDb;
 
 use PeekAndPoke\Component\GeoJson\Point;
 use PeekAndPoke\Component\Slumber\Data\EntityRepository;
+use PeekAndPoke\Component\Slumber\Data\LazyDbReferenceCollection;
 use PeekAndPoke\Component\Slumber\Data\MongoDb\MongoDbStorageDriver;
 use PeekAndPoke\Component\Slumber\Data\MongoDb\MongoDbUtil;
 use PeekAndPoke\Component\Slumber\Data\RepositoryRegistryImpl;
@@ -213,7 +214,7 @@ final class SimplePersistenceFeatureTest extends SlumberMongoDbTestBase
 
         $polyList = $reloadedMain->getAListOfPolymorphics();
 
-        static::assertCount(4, $polyList, 'The right number of Polymorphics must be reloaded');
+        static::assertSame(4, \count($polyList), 'The right number of Polymorphics must be reloaded');
 
         /** @var UnitTestDataPolyChildA $polyOne */
         $polyOne = $polyList[0];
@@ -331,9 +332,9 @@ final class SimplePersistenceFeatureTest extends SlumberMongoDbTestBase
 
         $referencedObjects = $reloadedMain->getAListOfReferencedObjects();
 
-        static::assertCount(
+        static::assertSame(
             3,
-            $reloadedMain->getAListOfReferencedObjects(),
+            \count($reloadedMain->getAListOfReferencedObjects()),
             'The count of reloaded referenced objects must be correct'
         );
         static::assertEquals(
@@ -380,10 +381,12 @@ final class SimplePersistenceFeatureTest extends SlumberMongoDbTestBase
         $referencedObjects = $reloadedMain->getAListOfMapsOfReferencedObjects();
 
         // accessing the referenced object via index must work
+        static::assertTrue(\is_array($referencedObjects));
+        static::assertInstanceOf(LazyDbReferenceCollection::class, $referencedObjects[0]);
 
-        static::assertCount(
+        static::assertSame(
             2,
-            $reloadedMain->getAListOfMapsOfReferencedObjects(),
+            \count($reloadedMain->getAListOfMapsOfReferencedObjects()),
             'The count of reloaded referenced objects must be correct'
         );
         static::assertEquals(
@@ -932,7 +935,7 @@ final class SimplePersistenceFeatureTest extends SlumberMongoDbTestBase
         $item->setASomethingElseAsIs(987);
 
         // GeoJson
-        $item->setAGeoJsonPoint(new Point(52.5, 13.3));
+        $item->setAGeoJsonPoint(Point::fromLngLat(13.3, 52.5));
 
         return $item;
     }

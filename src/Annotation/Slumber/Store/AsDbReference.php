@@ -68,7 +68,7 @@ class AsDbReference extends SlumberAnnotation implements PropertyStorageMarker, 
      *
      * @throws SlumberException
      */
-    public function validate($context)
+    public function validate(ValidationContext $context)
     {
         if ($this->lazy !== true) {
             throw $this->createValidationException(

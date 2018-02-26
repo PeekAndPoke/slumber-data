@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "66ce4efb6b1092399e0dd0952a46b6f0",
+    "content-hash": "d5855160dc1dfefba321dca18d0e7bc4",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -550,16 +550,16 @@
         },
         {
             "name": "peekandpoke/slumber",
-            "version": "v1.0.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PeekAndPoke/slumber.git",
-                "reference": "cac58203bfb07d2f44b4c5e18369af59831ccb86"
+                "reference": "d5b4f221e7c9dad08a4a4a962d6981701b292960"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PeekAndPoke/slumber/zipball/cac58203bfb07d2f44b4c5e18369af59831ccb86",
-                "reference": "cac58203bfb07d2f44b4c5e18369af59831ccb86",
+                "url": "https://api.github.com/repos/PeekAndPoke/slumber/zipball/d5b4f221e7c9dad08a4a4a962d6981701b292960",
+                "reference": "d5b4f221e7c9dad08a4a4a962d6981701b292960",
                 "shasum": ""
             },
             "require": {
@@ -572,7 +572,7 @@
                 "symfony/finder": "^3.3.10"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.1.0",
+                "phpunit/phpunit": "^7.0.1",
                 "roave/security-advisories": "dev-master"
             },
             "type": "library",
@@ -592,7 +592,7 @@
                 }
             ],
             "description": "Serialization through Annotations",
-            "time": "2018-02-16T16:55:47+00:00"
+            "time": "2018-02-26T12:57:55+00:00"
         },
         {
             "name": "psr/container",
