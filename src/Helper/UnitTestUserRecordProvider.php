@@ -23,6 +23,7 @@ class UnitTestUserRecordProvider implements UserRecordProvider
             ->setUserAgent('CLI')
             ->setRole('Admin')
             ->setIp('127.0.0.1')
-            ->setUserId('UnitTest');
+            ->setUserId('UnitTest')
+            ->setSessionHash(sha1('abc123'));
     }
 }

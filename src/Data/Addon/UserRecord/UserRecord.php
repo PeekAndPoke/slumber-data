@@ -48,6 +48,17 @@ class UserRecord
     private $userAgent;
 
     /**
+     * Use this to store a hashed version of the users session id.
+     *
+     * For security reason it is HIGHLY recommended to NOT store the real session id.
+     *
+     * @var string
+     *
+     * @Slumber\AsString()
+     */
+    private $sessionHash;
+
+    /**
      * @return string
      */
     public function __toString()
@@ -161,6 +172,26 @@ class UserRecord
     public function setUserAgent($userAgent)
     {
         $this->userAgent = $userAgent;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSessionHash() : string
+    {
+        return $this->sessionHash;
+    }
+
+    /**
+     * @param string $sessionHash
+     *
+     * @return $this
+     */
+    public function setSessionHash(string $sessionHash)
+    {
+        $this->sessionHash = $sessionHash;
 
         return $this;
     }
