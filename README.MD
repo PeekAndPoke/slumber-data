@@ -61,17 +61,19 @@ In order to used the Slumber storage some things need to be set up in the beggin
 
 ```php
 
-// we need a PSR-11 ContainerInterface
+// we need a PSR-11 ContainerInterface ... it must be found somewhere in your application
 $di = ...; 
 
-// we need a PSR-3 logger
+// we need a PSR-3 logger ... probably this is present in your application already
 $logger = ...; 
 
-// we need a doctrine cache ... ideall APCU as it is the fastest for our purpose
+// We need a doctrine cache for caching the annotations
+// ... otherwise annotations will need to be parsed on each request, which is slow 
+// ... ideally APCU as it is the fastest for our purpose
 $cache = new ApcuCache();
 
 // we need a doctrine annotation reader
-$annotationReader = new CachedReader(new AnnotationReader(), $cache);
+$annotationReader = new CachedReader(new AnnotationReader(), $cache, true);
 
 // SLUMBER: we need an instance of the entity config reader (the one that reads the Slumber annotations) 
 $configReader = new MongoDbEntityConfigReaderCached(
@@ -79,8 +81,8 @@ $configReader = new MongoDbEntityConfigReaderCached(
         new AnnotatedEntityConfigReader($di, $annotationReader, new MongoDbPropertyMarkerToMapper())
     ),
     $cache,
-    'test',
-    true
+    'test',  // the cache-prefix
+    true     // debug mode
 )
 
 // SLUMBER: we need the codec set for serializing / unserializing
